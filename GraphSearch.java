@@ -7,8 +7,7 @@ public class GraphSearch {
         DFSRecHelper(start,end,explored,searchOrder);
         if(explored.contains(end))
             return searchOrder;
-        else
-            return null;
+        return null;
     }
     private static boolean DFSRecHelper(final Graph.Node start, final Graph.Node end, Set<Graph.Node> explored,ArrayList<Graph.Node> searchOrder) {
         if(explored.contains(start))
@@ -19,7 +18,7 @@ public class GraphSearch {
         if(start==end)
             return true;
         Stack<Graph.Node> stack=new Stack<Graph.Node>();
-        for(Graph.Node node:start.adjacencyList) {
+        for(Graph.Node node:start.adjacencyList.keySet()) {
             stack.push(node);
         }
         boolean done=false;
@@ -36,11 +35,11 @@ public class GraphSearch {
             Graph.Node curr=stack.pop();
             if (explored.contains(curr))
                 continue;
-            else
-                explored.add(curr);
+            explored.add(curr);
             searchOrder.add(curr);
-            if(curr==end) break;
-            for (Graph.Node node : curr.adjacencyList) {
+            if(curr==end)
+                break;
+            for (Graph.Node node : curr.adjacencyList.keySet()) {
                 stack.push(node);
             }
         }
@@ -67,7 +66,7 @@ public class GraphSearch {
         }
         explored.add(node);
         searchOrder.add(node);
-        for (Graph.Node n : node.adjacencyList)
+        for (Graph.Node n : node.adjacencyList.keySet())
             queue.add(n);
         if(queue.peek()!=null)
             BFTRecHelper(queue.remove(),queue,explored,searchOrder);
@@ -84,10 +83,9 @@ public class GraphSearch {
                 Graph.Node curr = queue.remove();
                 if (explored.contains(curr))
                     continue;
-                else
-                    explored.add(curr);
+                explored.add(curr);
                 searchOrder.add(curr);
-                for (Graph.Node node : curr.adjacencyList) {
+                for (Graph.Node node : curr.adjacencyList.keySet()) {
                     queue.add(node);
                 }
             }
