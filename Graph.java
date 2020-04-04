@@ -1,2 +1,2 @@
-public class Graph extends AbstractGraph {
+public class Graph extends AbstractShapelessGraph {
 }

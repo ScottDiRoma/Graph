@@ -41,6 +41,37 @@ public class TopSort {
         return output;
     }
     public static ArrayList<DirectedGraph.Node> mDFS(final DirectedGraph graph) {
-        return null;
+        HashSet<DirectedGraph.Node> nodes=graph.getAllNodes();
+        ArrayList<DirectedGraph.Node> output=new ArrayList<>(nodes.size());
+        HashSet<DirectedGraph.Node> visited=new HashSet<>();
+        HashSet<DirectedGraph.Node> pushed=new HashSet<>();
+        Stack<DirectedGraph.Node> DFTstack=new Stack<>();
+        Stack<DirectedGraph.Node> outputStack=new Stack<>();
+        Iterator<DirectedGraph.Node> nodeIter=nodes.iterator();
+        while(nodeIter.hasNext()) {
+            DFTstack.push(nodeIter.next());
+            while(!DFTstack.empty()) {
+                DirectedGraph.Node curr=DFTstack.pop();
+                if(visited.contains(curr)) {
+                    if(!pushed.contains(curr)) {
+                        Iterator<DirectedGraph.Node> edgeIter=curr.adjacencyList.keySet().iterator();
+                        while(edgeIter.hasNext())
+                            if(!pushed.contains(edgeIter.next()))
+                                return null;
+                        pushed.add(curr);
+                        outputStack.push(curr);
+                    }
+                    continue;
+                }
+                DFTstack.push(curr);
+                visited.add(curr);
+                Iterator<DirectedGraph.Node> edgeIter=curr.adjacencyList.keySet().iterator();
+                while(edgeIter.hasNext())
+                    DFTstack.push(edgeIter.next());
+            }
+        }
+        while(!outputStack.empty())
+            output.add(outputStack.pop());
+        return output;
     }
 }

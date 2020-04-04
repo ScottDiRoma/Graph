@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class GraphSearch {
+    /**
+     * @return ArrayList of nodes in the order in which they are searched through
+     * a node never appears twice in output
+     */
     public static ArrayList<Graph.Node> DFSRec(final Graph.Node start, final Graph.Node end) {
         ArrayList<Graph.Node> searchOrder=new ArrayList<Graph.Node>();
         Set<Graph.Node> explored=new HashSet<Graph.Node>();
@@ -9,6 +13,9 @@ public class GraphSearch {
             return searchOrder;
         return null;
     }
+    /**
+     * @return true if start==end, false otherwise
+     */
     private static boolean DFSRecHelper(final Graph.Node start, final Graph.Node end, Set<Graph.Node> explored,ArrayList<Graph.Node> searchOrder) {
         if(explored.contains(start))
             return false;
@@ -39,15 +46,18 @@ public class GraphSearch {
             searchOrder.add(curr);
             if(curr==end)
                 break;
-            for (Graph.Node node : curr.adjacencyList.keySet()) {
+            for (Graph.Node node : curr.adjacencyList.keySet())
                 stack.push(node);
-            }
         }
         if(explored.contains(end))
             return searchOrder;
         else
             return null;
     }
+
+    /**
+     * @return ArrayList containing each node once, in the order in which they are traversed
+     */
     public static ArrayList<Graph.Node> BFTRec(final Graph graph) {
         ArrayList<Graph.Node> searchOrder=new ArrayList<Graph.Node>();
         Set<Graph.Node> explored=new HashSet<Graph.Node>();
