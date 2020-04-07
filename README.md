@@ -1,11 +1,11 @@
 # Graph
 
-Inheritance of graph classes:
+Inheritance of graph classes:<br><br>
 
-AbstractGraph
-    GridGraph
-    AbstractShapelessGraph
-        Graph
-        AbstractDirectedGraph
-            DirectedGraph
-            WeightedGraph
+AbstractGraph<br>
+    GridGraph<br>
+    AbstractShapelessGraph<br>
+        Graph<br>
+        AbstractDirectedGraph<br>
+            DirectedGraph<br>
+            WeightedGraph<br>
