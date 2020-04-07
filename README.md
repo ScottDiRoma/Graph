@@ -1,5 +1,5 @@
 # Graph
-<div style="white-space: pre;">
+<pre>
 Inheritance of graph classes:
 
 AbstractGraph
@@ -9,4 +9,4 @@ AbstractGraph
         AbstractDirectedGraph
             DirectedGraph
             WeightedGraph
-</div>
+</pre>
