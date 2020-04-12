@@ -3,3 +3,4 @@ public abstract class AbstractDirectedGraph extends AbstractShapelessGraph {
         first.adjacencyList.remove(second);
     }
 }
+//1. Bro, just put this into another function, creating another file for something as small as this is much too cumbersome.
