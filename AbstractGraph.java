@@ -13,6 +13,12 @@ public abstract class AbstractGraph {
         }
     }
 
+    /**
+     *
+     * @param first one of the nodes to be connected
+     * @param second the other node to be connected
+     * does nothing if first==second
+     */
     public void addUndirectedEdge(final Node first,final Node second) {
         if(first!=second) {
             first.adjacencyList.put(second,1);

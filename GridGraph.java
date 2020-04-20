@@ -42,7 +42,9 @@ public class GridGraph extends AbstractGraph {
         return grid.get(x).get(y);
     }
     public GridNode getTopRightNode() {
-        return grid.get(grid.size()-1).get(grid.get(grid.size()-1).size()-1);
+        int xSize=grid.size();
+        int ySize=grid.get(xSize-1).size();
+        return grid.get(xSize-1).get(ySize-1);
     }
     public HashSet<GridNode> getAllNodes() {
         return nodes;

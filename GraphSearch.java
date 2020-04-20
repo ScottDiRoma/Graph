@@ -9,7 +9,7 @@ public class GraphSearch {
         ArrayList<Graph.Node> searchOrder=new ArrayList<Graph.Node>();
         Set<Graph.Node> explored=new HashSet<Graph.Node>();
         DFSRecHelper(start,end,explored,searchOrder);
-        if(explored.contains(end))
+        if(searchOrder.get(searchOrder.size()-1)==end)
             return searchOrder;
         return null;
     }
@@ -19,8 +19,7 @@ public class GraphSearch {
     private static boolean DFSRecHelper(final Graph.Node start, final Graph.Node end, Set<Graph.Node> explored,ArrayList<Graph.Node> searchOrder) {
         if(explored.contains(start))
             return false;
-        else
-            explored.add(start);
+        explored.add(start);
         searchOrder.add(start);
         if(start==end)
             return true;
@@ -51,8 +50,7 @@ public class GraphSearch {
         }
         if(explored.contains(end))
             return searchOrder;
-        else
-            return null;
+        return null;
     }
 
     /**

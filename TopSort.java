@@ -5,7 +5,7 @@ public class TopSort {
         ArrayList<DirectedGraph.Node> output=new ArrayList<>();
         Queue<DirectedGraph.Node> queue=new LinkedList<>();
         HashSet<DirectedGraph.Node> nodes=graph.getAllNodes();
-        LinkedHashMap<DirectedGraph.Node,Integer> inDegrees=new LinkedHashMap<>();
+        HashMap<DirectedGraph.Node,Integer> inDegrees=new HashMap<>();
         Iterator<DirectedGraph.Node> nodeIter=nodes.iterator();
         while(nodeIter.hasNext()) {
             DirectedGraph.Node node=nodeIter.next();
@@ -44,22 +44,21 @@ public class TopSort {
         HashSet<DirectedGraph.Node> nodes=graph.getAllNodes();
         ArrayList<DirectedGraph.Node> output=new ArrayList<>(nodes.size());
         HashSet<DirectedGraph.Node> visited=new HashSet<>();
-        HashSet<DirectedGraph.Node> pushed=new HashSet<>();
+        HashSet<DirectedGraph.Node> addedToOutput=new HashSet<>();
         Stack<DirectedGraph.Node> DFTstack=new Stack<>();
-        Stack<DirectedGraph.Node> outputStack=new Stack<>();
         Iterator<DirectedGraph.Node> nodeIter=nodes.iterator();
         while(nodeIter.hasNext()) {
             DFTstack.push(nodeIter.next());
             while(!DFTstack.empty()) {
                 DirectedGraph.Node curr=DFTstack.pop();
                 if(visited.contains(curr)) {
-                    if(!pushed.contains(curr)) {
+                    if(!addedToOutput.contains(curr)) {
                         Iterator<DirectedGraph.Node> edgeIter=curr.adjacencyList.keySet().iterator();
                         while(edgeIter.hasNext())
-                            if(!pushed.contains(edgeIter.next()))
+                            if(!addedToOutput.contains(edgeIter.next()))
                                 return null;
-                        pushed.add(curr);
-                        outputStack.push(curr);
+                        addedToOutput.add(curr);
+                        output.add(curr);
                     }
                     continue;
                 }
@@ -70,8 +69,7 @@ public class TopSort {
                     DFTstack.push(edgeIter.next());
             }
         }
-        while(!outputStack.empty())
-            output.add(outputStack.pop());
+        Collections.reverse(output);
         return output;
     }
 }
