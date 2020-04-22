@@ -23,3 +23,4 @@ public class AbstractShapelessGraph extends AbstractGraph {
         return null;
     }
 }
+//3. I'd rather this just be in a larger file containing all graph abstractions. 
