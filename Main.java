@@ -119,3 +119,6 @@ public class Main {
         return graph;
     }
 }
+
+//9. Lengthy and hard to read, needs spaces.
+//10. Try to make this with portability in mind.
