@@ -30,3 +30,4 @@ public abstract class AbstractGraph {
         second.adjacencyList.remove(first);
     }
 }
+// 2. Meaningful variable names, good spacing. Very nice.
